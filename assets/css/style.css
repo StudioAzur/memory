@@ -27,7 +27,7 @@ img{
 
 #card_area{
     margin-top: 2%;
-    max-width: calc(1000px * 2);
+    max-width: calc(1100px * 2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,5 +60,15 @@ h1{
 }
 
 #logo{
-    margin-left: 42.5%;
+    margin-left: 44%;
+}
+
+#timer{
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(245, 151, 16);
+    text-shadow:  2px 2px rgb(65, 63, 63);
+    background-color: rgba(171, 239, 239, 0.389);
+    width: 75;
+    text-align: center;
 }

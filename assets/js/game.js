@@ -6,7 +6,11 @@ export default class Game {
       cardArea: document.querySelector("#card_area"),
       imageCompare: [],
       indexImg: [],
+      cardPair: [],
       verso: "url('./assets/images/verso.png')",
+      timer: document.querySelector("#timer"),
+      myTimer: setInterval(this.reductTime, 1000),
+      chrono: 90,
     };
 
     this.init();
@@ -17,6 +21,7 @@ export default class Game {
     window.addEventListener("load", () => {
       this.createCard();
       this.play();
+      this.timer();
     });
   };
 
@@ -50,16 +55,34 @@ export default class Game {
         if (this.params.imageCompare.length === 2) {
           setTimeout(() => {
             this.checkCards(this.params.imageCompare, this.params.indexImg);
-          }, 650);
+          }, 600);
         }
       });
     });
+  };
+
+  reductTime = () => {
+    let minutes = parseInt(this.params.chrono / 60, 10);
+    let secondes = parseInt(this.params.chrono % 60, 10);
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    secondes = secondes < 10 ? "0" + secondes : secondes;
+    this.params.timer.textContent = minutes + ":" + secondes;
+    this.params.chrono = this.params.chrono <= 0 ? 0 : this.params.chrono - 1;
+    if(this.params.chrono === 0 || this.params.cardPair.length == listShuffle.length / 2){
+      clearInterval(this.params.myTimer);
+      this.checkWin();
+    }
+  };
+
+  timer = () => {  
+    this.params.myTimer;
   };
 
   checkCards = (imageCompare, indexImg) => {
     if (imageCompare[0] === imageCompare[1] && indexImg[0] != indexImg[1]) {
       let element1 = document.getElementById(`${indexImg[0]}`);
       let element2 = document.getElementById(`${indexImg[1]}`);
+      this.params.cardPair.push(imageCompare[0]);
       element1.classList.remove("visible");
       element1.classList.add("hidden");
       element2.classList.remove("visible");
@@ -89,6 +112,17 @@ export default class Game {
     let element2 = document.getElementById(`${indexImg[1]}`);
     element1.firstChild.src = "";
     element2.firstChild.src = "";
+  };
+
+  checkWin = () => {
+    if(this.params.chrono == 0){
+      this.params.timer.textContent = "";
+      this.params.timer.textContent = "Le Digimonde est perdu !";
+    }
+    if (this.params.cardPair.length == listShuffle.length / 2) {
+      this.params.timer.textContent = "";
+      this.params.timer.textContent = "Gagné ! Tu as sauvé le Digimonde !";
+    }
   };
 }
 
