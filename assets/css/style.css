@@ -27,7 +27,7 @@ img{
 
 #card_area{
     margin-top: 2%;
-    max-width: calc(1100px * 2);
+    max-width: calc(1000px * 2);
     display: flex;
     justify-content: center;
     align-items: center;
