@@ -11,6 +11,7 @@ export default class Game {
       timer: document.querySelector("#timer"),
       myTimer: setInterval(this.reductTime, 1000),
       chrono: 90,
+      restart: document.querySelector("#restart")
     };
 
     this.init();
@@ -19,6 +20,7 @@ export default class Game {
   /* Une fonction qui est appelée lorsque la page est chargée. */
   init = () => {
     window.addEventListener("load", () => {
+      this.params.restart.disabled = true;
       this.createCard();
       this.play();
       this.timer();
@@ -74,10 +76,16 @@ checkCards est appelée. */
     this.params.timer.textContent = minutes + ":" + secondes;
     this.params.chrono = this.params.chrono <= 0 ? 0 : this.params.chrono - 1;
     if(this.params.chrono === 0 || this.params.cardPair.length == listShuffle.length / 2){
+      this.params.restart.disabled = false;
+      this.params.restart.addEventListener("click", this.reload);
       clearInterval(this.params.myTimer);
       this.checkWin();
     }
   };
+
+  reload = ()=> {
+    window.location.reload();
+  }
 
 /* Fonction appelée toutes les secondes. Il réduit le temps de 1 seconde. */
   timer = () => {  
