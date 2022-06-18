@@ -38,6 +38,10 @@ export default class Game {
     }
   };
 
+/* Ajout d'un écouteur d'événement à chaque carte. Lorsque la carte est cliquée, l'image est remplacée
+par l'image du digimon au même index dans le tableau listShuffle. La source de l'image est stockée
+dans le tableau imageCompare. Si le tableau imageCompare comporte deux éléments, la fonction
+checkCards est appelée. */
   play = () => {
     let cards = document.querySelectorAll(".card");
     cards.forEach((element, index) => {
@@ -61,6 +65,7 @@ export default class Game {
     });
   };
 
+  /* C'est une fonction qui est appelée toutes les secondes. Il réduit le temps de 1 seconde. */
   reductTime = () => {
     let minutes = parseInt(this.params.chrono / 60, 10);
     let secondes = parseInt(this.params.chrono % 60, 10);
@@ -74,10 +79,12 @@ export default class Game {
     }
   };
 
+/* Fonction appelée toutes les secondes. Il réduit le temps de 1 seconde. */
   timer = () => {  
     this.params.myTimer;
   };
 
+  /* Vérifier si les deux cartes sont identiques et si elles ne sont pas identiques, il les retourne. */
   checkCards = (imageCompare, indexImg) => {
     if (imageCompare[0] === imageCompare[1] && indexImg[0] != indexImg[1]) {
       let element1 = document.getElementById(`${indexImg[0]}`);
@@ -98,15 +105,16 @@ export default class Game {
     }
   };
 
+ /* Fonction appelée lorsque les deux cartes ne sont pas identiques. Il retourne les cartes. */
   flipCard = (indexImg) => {
     let cards = document.querySelectorAll(".card");
     for (let index = 0; index < cards.length; index++) {
-      // let element1 = document.getElementById(`${indexImg[0]}`);
       cards[index].style.backgroundImage = this.params.verso;
     }
     this.removeSource(indexImg);
   };
 
+  /* Suppression de la source de l'image. */
   removeSource = (indexImg) => {
     let element1 = document.getElementById(`${indexImg[0]}`);
     let element2 = document.getElementById(`${indexImg[1]}`);
@@ -114,6 +122,7 @@ export default class Game {
     element2.firstChild.src = "";
   };
 
+ /* Vérifier si le jeu est gagné ou perdu. */
   checkWin = () => {
     if(this.params.chrono == 0){
       this.params.timer.textContent = "";
