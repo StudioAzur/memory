@@ -95,7 +95,8 @@ h1 {
   height: 300px;
 }
 
-#restart {
+#restart,
+#song {
   align-items: center;
   background-clip: padding-box;
   background-color: rgb(245, 151, 16);
@@ -125,17 +126,25 @@ h1 {
   height: 4rem;
 }
 
-#restart:hover,
-#restart:focus {
+#restart,
+#song:hover,
+#restart,
+#song:focus {
   background-color: #fb8332;
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
 
-#restart:hover {
+#song{
+    font-size: 30px;
+}
+
+#restart,
+#song :hover {
   transform: translateY(-1px);
 }
 
-#restart:disabled {
+#restart,
+#song:disabled {
   background-color: #c85000;
   transform: translateY(0);
   cursor: default;

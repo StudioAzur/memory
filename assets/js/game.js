@@ -15,7 +15,8 @@ export default class Game {
       audio: new Audio("./assets/song/digimon.mp3"),
       lose: new Audio("./assets/song/lose.mp3"),
       win: new Audio("./assets/song/win.mp3"),
-      pair: new Audio("./assets/song/pair.mp3")
+      pair: new Audio("./assets/song/pair.mp3"),
+      song: document.querySelector("#song"),
     };
 
     this.init();
@@ -24,12 +25,24 @@ export default class Game {
   /* Une fonction qui est appelée lorsque la page est chargée. */
   init = () => {
     window.addEventListener("load", () => {
-      this.params.audio.play();
       this.params.restart.disabled = true;
+      this.params.song.textContent = "♫";
+      this.params.song.addEventListener("click", this.mute);
       this.createCard();
       this.play();
       this.timer();
+      this.params.audio.play();
     });
+  };
+
+  mute = () => {
+    if (this.params.audio.duration > 0 && !this.params.audio.paused) {
+      this.params.audio.pause();
+      this.params.song.textContent = "❌";
+    } else {
+      this.params.song.textContent = "♫";
+      this.params.audio.play();
+    }
   };
 
   /* Création d'une carte pour chaque élément du tableau listShuffle. */
@@ -45,7 +58,7 @@ export default class Game {
     }
   };
 
-/* Ajout d'un écouteur d'événement à chaque carte. Lorsque la carte est cliquée, l'image est remplacée
+  /* Ajout d'un écouteur d'événement à chaque carte. Lorsque la carte est cliquée, l'image est remplacée
 par l'image du digimon au même index dans le tableau listShuffle. La source de l'image est stockée
 dans le tableau imageCompare. Si le tableau imageCompare comporte deux éléments, la fonction
 checkCards est appelée. */
@@ -80,7 +93,10 @@ checkCards est appelée. */
     secondes = secondes < 10 ? "0" + secondes : secondes;
     this.params.timer.textContent = minutes + ":" + secondes;
     this.params.chrono = this.params.chrono <= 0 ? 0 : this.params.chrono - 1;
-    if(this.params.chrono === 0 || this.params.cardPair.length == listShuffle.length / 2){
+    if (
+      this.params.chrono === 0 ||
+      this.params.cardPair.length == listShuffle.length / 2
+    ) {
       this.params.restart.disabled = false;
       this.params.restart.addEventListener("click", this.reload);
       clearInterval(this.params.myTimer);
@@ -88,12 +104,12 @@ checkCards est appelée. */
     }
   };
 
-  reload = ()=> {
+  reload = () => {
     window.location.reload();
-  }
+  };
 
-/* Fonction appelée toutes les secondes. Il réduit le temps de 1 seconde. */
-  timer = () => {  
+  /* Fonction appelée toutes les secondes. Il réduit le temps de 1 seconde. */
+  timer = () => {
     this.params.myTimer;
   };
 
@@ -119,7 +135,7 @@ checkCards est appelée. */
     }
   };
 
- /* Fonction appelée lorsque les deux cartes ne sont pas identiques. Il retourne les cartes. */
+  /* Fonction appelée lorsque les deux cartes ne sont pas identiques. Il retourne les cartes. */
   flipCard = (indexImg) => {
     let cards = document.querySelectorAll(".card");
     for (let index = 0; index < cards.length; index++) {
@@ -136,9 +152,9 @@ checkCards est appelée. */
     element2.firstChild.src = "";
   };
 
- /* Vérifier si le jeu est gagné ou perdu. */
+  /* Vérifier si le jeu est gagné ou perdu. */
   checkWin = () => {
-    if(this.params.chrono == 0){
+    if (this.params.chrono == 0) {
       this.params.audio.pause();
       this.params.lose.play();
       this.params.timer.textContent = "";
