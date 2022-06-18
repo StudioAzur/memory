@@ -1,74 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
-body{
-    background-image: url("../images/digiworld.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+body {
+  background-image: url("../images/digiworld.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.card{
-    display: flex;
-    align-items:center;
-    justify-content: center;
-    border: 4px solid rgb(245, 151, 16);
-    height: 300px;
-    width: 200px;
-    background-image: url("../images/verso.png");
-    background-size: cover;
-    z-index: 30;
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin: 0;
 }
 
-
-img{
-    height:10rem;
-    position: relative;
-    pointer-events: none;
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid rgb(0, 1, 7);
+  height: 200px;
+  width: 200px;
+  background-image: url("../images/verso.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-#card_area{
-    margin-top: 2%;
-    max-width: calc(1000px * 2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    gap: 2.5em;
-    flex-wrap: wrap;
-    background-color: rgba(171, 239, 239, 0.389);
-    padding: 1.5em;
+img {
+  height: 10rem;
+  position: relative;
+  pointer-events: none;
+}
+
+#card_area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 2.5em;
+  flex-wrap: wrap;
+  background-color: rgba(171, 239, 239, 0.389);
+  padding: 1.5em;
+  width:50%;
 }
 
 .visible {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 1s linear;
-  }
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s linear;
+}
 
-  .hidden {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s 1s, opacity 1s linear;
-  }
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 1s linear;
+}
 
-h1{
-    text-align: center;
-    text-transform: uppercase;
-    font-family: 'Audiowide', cursive;
-    color: rgb(245, 151, 16);
-    font-size: 40px;
-    text-shadow:  2px 2px rgb(65, 63, 63);
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Audiowide", cursive;
+  color: rgb(245, 151, 16);
+  font-size: 50px;
+  text-shadow: 2px 2px rgb(65, 63, 63);
+}
+
+#timer {
+  font-weight: bold;
+  font-size: 42px;
+  color: rgb(245, 151, 16);
+  text-shadow: 2px 2px rgb(65, 63, 63);
+  background-color: rgba(171, 239, 239, 0.389);
+  text-align: center;
+  padding: 1.5em;
+}
+
+#bloc_left {
+  background-color: rgba(126, 237, 237, 0.192); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  padding: 1em;
+  margin-right: 40px;
 }
 
 #logo{
-    margin-left: 44%;
-}
-
-#timer{
-    font-weight: bold;
-    font-size: 30px;
-    color: rgb(245, 151, 16);
-    text-shadow:  2px 2px rgb(65, 63, 63);
-    background-color: rgba(171, 239, 239, 0.389);
-    width: 75;
-    text-align: center;
+    height: 300px;
 }
