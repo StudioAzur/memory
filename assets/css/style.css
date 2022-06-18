@@ -4,6 +4,9 @@ body {
   background-image: url("../images/digiworld.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
 }
 
 #container {
@@ -83,6 +86,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   align-content: center;
+  align-self: flex-start;
   padding: 1em;
   margin-right: 40px;
 }
@@ -136,3 +140,76 @@ h1 {
   transform: translateY(0);
   cursor: default;
 }
+
+
+@media screen and (max-width: 1460px) {
+    #bloc_left{
+        margin-left: 20px;
+        width: 200px;
+        overflow: hidden;
+    }
+
+    #card_area{
+        width: 70%;
+    }
+
+    #logo {
+        height: 150px;
+      }
+
+    h1{
+        font-size: 40px;
+    }
+    #card_area{
+        gap: 2em;
+    }
+
+}
+
+@media screen and (max-width: 1340px) {
+    .card{
+        width: 100px;
+        height: 100px;
+    }
+
+    img{
+        height: 5em;
+    }
+
+}
+
+@media screen and (max-width: 690px) {
+    #container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #bloc_left{
+        align-self: center;
+    }
+
+    #card_area{
+        width: 90%
+    }
+
+}
+
+@media screen and (max-width: 435px) {
+    .card{
+        width: 80px;
+        height: 80px;
+    }
+
+    img{
+        height: 3em;
+    }
+
+    #card_area{
+        gap: 1em;
+    }
+
+}
+
+
+
+
