@@ -11,7 +11,11 @@ export default class Game {
       timer: document.querySelector("#timer"),
       myTimer: setInterval(this.reductTime, 1000),
       chrono: 90,
-      restart: document.querySelector("#restart")
+      restart: document.querySelector("#restart"),
+      audio: new Audio("./assets/song/digimon.mp3"),
+      lose: new Audio("./assets/song/lose.mp3"),
+      win: new Audio("./assets/song/win.mp3"),
+      pair: new Audio("./assets/song/pair.mp3")
     };
 
     this.init();
@@ -20,6 +24,7 @@ export default class Game {
   /* Une fonction qui est appelée lorsque la page est chargée. */
   init = () => {
     window.addEventListener("load", () => {
+      this.params.audio.play();
       this.params.restart.disabled = true;
       this.createCard();
       this.play();
@@ -106,6 +111,7 @@ checkCards est appelée. */
       element2.removeEventListener("click", this.flipCard);
       this.params.imageCompare = [];
       this.params.indexImg = [];
+      this.params.pair.play();
     } else {
       this.flipCard(indexImg);
       this.params.imageCompare = [];
@@ -133,10 +139,14 @@ checkCards est appelée. */
  /* Vérifier si le jeu est gagné ou perdu. */
   checkWin = () => {
     if(this.params.chrono == 0){
+      this.params.audio.pause();
+      this.params.lose.play();
       this.params.timer.textContent = "";
       this.params.timer.textContent = "Le Digimonde est perdu !";
     }
     if (this.params.cardPair.length == listShuffle.length / 2) {
+      this.params.audio.pause();
+      this.params.win.play();
       this.params.timer.textContent = "";
       this.params.timer.textContent = "Gagné ! Tu as sauvé le Digimonde !";
     }
