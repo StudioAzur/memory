@@ -26,8 +26,12 @@ export default class Game {
   init = () => {
     window.addEventListener("load", () => {
       this.params.restart.disabled = true;
+      this.params.song.disabled = false;
       this.params.song.textContent = "♫";
-      this.params.song.addEventListener("click", this.mute);
+      this.params.song.addEventListener("click", (e) =>{
+        e.preventDefault();
+        this.mute();
+      });
       this.createCard();
       this.play();
       this.timer();
@@ -159,12 +163,14 @@ checkCards est appelée. */
       this.params.lose.play();
       this.params.timer.textContent = "";
       this.params.timer.textContent = "Le Digimonde est perdu !";
+      this.params.song.disabled = true;
     }
     if (this.params.cardPair.length == listShuffle.length / 2) {
       this.params.audio.pause();
       this.params.win.play();
       this.params.timer.textContent = "";
       this.params.timer.textContent = "Gagné ! Tu as sauvé le Digimonde !";
+      this.params.song.disabled = true;  
     }
   };
 }

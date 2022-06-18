@@ -99,7 +99,7 @@ h1 {
 #song {
   align-items: center;
   background-clip: padding-box;
-  background-color: rgb(245, 151, 16);
+  background-color: #11CFDD;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
@@ -124,31 +124,41 @@ h1 {
   vertical-align: baseline;
   width: 12rem;
   height: 4rem;
+  cursor: pointer;
 }
 
-#restart,
-#song:hover,
-#restart,
-#song:focus {
-  background-color: #fb8332;
+#restart:hover{
+  background-color: orange;
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-}
-
-#song{
-    font-size: 30px;
-}
-
-#restart,
-#song :hover {
   transform: translateY(-1px);
+  text-transform: uppercase;
 }
 
-#restart,
-#song:disabled {
+#song:hover{
+    background-color: orange;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    transform: translateY(-1px);
+    text-transform: uppercase;
+  }
+#restart:disabled {
   background-color: #c85000;
   transform: translateY(0);
+  text-transform: none;
   cursor: default;
 }
+
+#song:disabled {
+    background-color: #c85000;
+    transform: translateY(0);
+    text-transform: none;
+    cursor: default;
+  }
+
+#song {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
 
 /* Une requête médiatique. Il est utilisé pour changer le style de la page lorsque la taille de l'écran
 est inférieure à 1460px. */
