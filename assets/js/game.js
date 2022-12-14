@@ -83,7 +83,7 @@ checkCards est appelée. */
         if (this.params.imageCompare.length === 2) {
           setTimeout(() => {
             this.checkCards(this.params.imageCompare, this.params.indexImg);
-          }, 600);
+          }, 200);
         }
       });
     });
